@@ -1,1 +1,0 @@
-wwpd_storage = []
