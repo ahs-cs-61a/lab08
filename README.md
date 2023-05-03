@@ -2,6 +2,8 @@
   
 This assignment merges problems from discussions, labs, and homeworks into one; they are new problems from Spring 2023 CS61A; refer to these links for problem descriptions and requirements:
   
+**NOTE**: current version of website will be archived after the semester ends; page will be accessible via https://inst.eecs.berkeley.edu/~cs61a/sp23/.
+  
 ## concept 1 - variables, control, functions:  
   
 - lab01: https://cs61a.org/lab/lab01/
@@ -29,8 +31,7 @@ This assignment merges problems from discussions, labs, and homeworks into one; 
 - hw06 - https://cs61a.org/hw/hw06/
 - disc07 - https://cs61a.org/disc/disc07/
 - lab07 - https://cs61a.org/lab/lab07/
-- disc08 - https://cs61a.org/disc/disc08/
-  
+    
 ## concept 6 - linked lists:
   
 - hw07 - https://cs61a.org/hw/hw07/
@@ -84,6 +85,7 @@ This assignment merges problems from discussions, labs, and homeworks into one; 
 - subseqs
 - non_decrease_subseqs
 - num_trees
+- all_3
   
 ### concept 4:
   
@@ -94,6 +96,7 @@ This assignment merges problems from discussions, labs, and homeworks into one; 
 - pizza_sort_helper
 - trade
 - shuffle
+- all_4
   
 ### concept 5:
   
@@ -101,15 +104,27 @@ This assignment merges problems from discussions, labs, and homeworks into one; 
 - game
 - aggressive_player
 - cautious_player
-- email
-- server
-- client
-- team_member
 - person
-- cucumber_game
 - round
-- shape
-- circle
-- reg_polygon
-- square
-- triangle
+- all_5
+  
+### concept 6:
+  
+- two_list
+- convert_link
+- multiply_lnks
+- flip_two
+- deep_len
+- make_to_string
+- all_6
+  
+### concept 7:
+  
+- sum_tree
+- sprout_leaves
+- hailstone_tree
+- find_paths
+- make_even
+- is_bst
+- reverse_other
+- all_7

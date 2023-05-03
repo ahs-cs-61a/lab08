@@ -1,7 +1,9 @@
 # lab08: review/additional practice 
 
+from random import *
 import math 
 pi = math.pi
+
 
 # concept 1 - variables, control, functions
 
@@ -49,7 +51,6 @@ def ordered_digits(x): # q2
     >>> result = ordered_digits(1375) # Return, don't print
     >>> result
     False
-
     """
     "*** YOUR CODE HERE ***"
 
@@ -154,7 +155,7 @@ def add_results(f1, f2): # q7
 
 # lab03: https://cs61a.org/lab/lab03/
 
-def composer(func1, func2): # do not edit, used in function_make_repeater
+def composer(func1, func2): # do not edit, used in function make_repeater
     """Return a function f, such that f(x) = func1(func2(x))."""
     def f(x):
         return func1(func2(x))
@@ -163,6 +164,7 @@ def composer(func1, func2): # do not edit, used in function_make_repeater
 def make_repeater(func, n): # q8, use function composer
     """Return the function that computes the nth application of func.
 
+    >>> square, identity, triple, increment = lambda x: x * x, lambda x: x, lambda x: 3 * x, lambda x: x + 1
     >>> add_three = make_repeater(increment, 3)
     >>> add_three(5)
     8
@@ -265,6 +267,7 @@ def count_k(n, k): # q13
 # lab10 - https://cs61a.org/lab/lab10/
 
 # note: questions 14-16 are grouped together
+
 def insert_into_all(item, nested_list): # q14
     """Return a new list consisting of all the lists in nested_list,
     but with item added to the front of each. You can assume that
@@ -503,7 +506,6 @@ class Player: # q24
     110
     >>> p1.popularity
     135
-
     """
     def __init__(self, name):
         self.name = name
@@ -526,7 +528,6 @@ class Game: # q25
     >>> winner = g.play()
     >>> p1 is winner
     True
-
     """
     def __init__(self, player1, player2):
         self.p1 = player1
@@ -552,7 +553,6 @@ class AggressivePlayer(Player): # q26
     >>> winner = g.play()
     >>> p1 is winner
     True
-
     """
     def choose(self, other):
         "*** YOUR CODE HERE ***"
@@ -567,125 +567,14 @@ class CautiousPlayer(Player): # q27
     >>> p1.popularity = 1
     >>> p1.choose(p2) == p1.debate
     False
-
     """
     def choose(self, other):
         "*** YOUR CODE HERE ***"
 
 
-# disc07 - https://cs61a.org/disc/disc07/
-
-# note: questions 28-30 are grouped together
-
-class Email: # q28
-    """
-    Every email object has 3 instance attributes: the
-    message, the sender name, and the recipient name.
-    >>> email = Email('hello', 'Alice', 'Bob')
-    >>> email.msg
-    'hello'
-    >>> email.sender_name
-    'Alice'
-    >>> email.recipient_name
-    'Bob'
-    """
-    def __init__(self, msg, sender_name, recipient_name):
-        "*** YOUR CODE HERE ***"
-
-class Server: # q29
-    """
-    Each Server has one instance attribute: clients (which
-    is a dictionary that associates client names with
-    client objects).
-    """
-    def __init__(self):
-        self.clients = {}
-
-    def send(self, email):
-        """
-        Take an email and put it in the inbox of the client
-        it is addressed to.
-        """
-        "*** YOUR CODE HERE ***"
-
-    def register_client(self, client, client_name):
-        """
-        Takes a client object and client_name and adds them
-        to the clients instance attribute.
-        """
-        "*** YOUR CODE HERE ***"
-
-class Client: # q30
-    """
-    Every Client has three instance attributes: name (which is
-    used for addressing emails to the client), server
-    (which is used to send emails out to other clients), and
-    inbox (a list of all emails the client has received).
-
-    >>> s = Server()
-    >>> a = Client(s, 'Alice')
-    >>> b = Client(s, 'Bob')
-    >>> a.compose('Hello, World!', 'Bob')
-    >>> b.inbox[0].msg
-    'Hello, World!'
-    >>> a.compose('CS 61A Rocks!', 'Bob')
-    >>> len(b.inbox)
-    2
-    >>> b.inbox[1].msg
-    'CS 61A Rocks!'
-    """
-    def __init__(self, server, name):
-        self.inbox = []
-        "*** YOUR CODE HERE ***"
-
-    def compose(self, msg, recipient_name):
-        """Send an email with the given message msg to the given recipient client."""
-        "*** YOUR CODE HERE ***"
-
-    def receive(self, email):
-        """Take an email and add it to the inbox of this client."""
-        "*** YOUR CODE HERE ***"
-
-
-class TeamMember: # q31
-    def __init__(self, operation, prev_member=None):
-        """
-        A TeamMember object is instantiated by taking in an `operation`
-        and a TeamMember object `prev_member`, which is the team member
-        who "sits in front of" this current team member. A TeamMember also
-        tracks a `history` list, which contains the answers given by
-        each individual team member.
-        """
-        self.history = []
-        "*** YOUR CODE HERE ***"
-
-    def relay_calculate(self, x):
-        """
-        The relay_calculate method takes in a number `x` and performs a
-        relay by passing in `x` to the first team member's `operation`.
-        Then, that answer is passed to the next member's operation, etc. until
-        we get to the current TeamMember, in which case we return the
-        final answer, `result`. 
-        """
-        if ________________:
-            "*** YOUR CODE HERE ***"
-
-        else:
-            "*** YOUR CODE HERE ***"
-
-        return result
-    
-    def relay_history(self):
-        """
-        Returns a list of the answers given by each team member in the
-        most recent relay the current TeamMember has participated in.
-        """
-        "*** YOUR CODE HERE ***"
-
-
 # lab07 - https://cs61a.org/lab/lab07/
 
-class Person: # q32
+class Person: # q28
     """Person class.
 
     >>> steven = Person("Steven")
@@ -722,9 +611,7 @@ class Person: # q32
         "*** YOUR CODE HERE ***"
 
 
-# note: questions 33 & 34 are grouped together
-
-class CucumberGame: # q33
+class CucumberGame: 
     """Play a round and return all winners so far. Cards is a list of pairs.
     Each (who, card) pair in cards indicates who plays and what card they play.
     >>> g = CucumberGame()
@@ -755,7 +642,7 @@ class CucumberGame: # q33
         if r.winner != None:
             self.winners.append(r.winner)
 
-class Round: # q34
+class Round: # q29
     players = 4
 
     def __init__(self, starter):
@@ -779,70 +666,11 @@ class Round: # q34
         return ______________________________________
     
 
-# disc08 - https://cs61a.org/disc/disc08/
-
-# note: questions 35-40
-
-class Shape: # q35
-    """All geometric shapes will inherit from this Shape class."""
-    def __init__(self, name):
-        self.name = name
-
-    def area(self):
-        """Returns the area of a shape"""
-        print("Override this method in ", type(self))
-
-    def perimeter(self):
-        """Returns the perimeter of a shape"""
-        print("Override this function in ", type(self))
-
-class Circle(Shape): # q36
-    """A circle is characterized by its radii"""
-    def __init__(self, name, radius):
-        "*** YOUR CODE HERE ***"
-
-    def perimeter(self):
-        """Returns the perimeter of a circle (2πr)"""
-        "*** YOUR CODE HERE ***"
-
-    def area(self):
-        """Returns the area of a circle (πr^2)"""
-        "*** YOUR CODE HERE ***"
-
-class RegPolygon(Shape): # q37 
-    """A regular polygon is defined as a shape whose angles and side lengths are all the same.
-    This means the perimeter is easy to calculate. The area can also be done, but it's more inconvenient."""
-    def __init__(self, name, num_sides, side_length):
-        "*** YOUR CODE HERE ***"
-
-    def perimeter(self):
-        """Returns the perimeter of a regular polygon (the number of sides multiplied by side length)"""
-        "*** YOUR CODE HERE ***"
-
-class Square(RegPolygon): # q38
-    def __init__(self, name, side_length):
-        "*** YOUR CODE HERE ***"
-
-    def area(self):
-        """Returns the area of a square (squared side length)"""
-        "*** YOUR CODE HERE ***"
-
-class Triangle(RegPolygon): # q39
-    """An equilateral triangle"""
-    def __init__(self, name, side_length):
-        "*** YOUR CODE HERE ***"
-
-    def area(self): # q40
-        """Returns the area of an equilateral triangle is (squared side length multiplied by the provided constant"""
-        constant = math.sqrt(3)/4
-        "*** YOUR CODE HERE ***"
-
-
 # concept 6 - linked lists
 
 # hw07 - https://cs61a.org/hw/hw07/
 
-def two_list(vals, counts): # q41
+def two_list(vals, counts): # q30
     """
     Returns a linked list according to the two lists that were passed in. Assume
     vals and counts are the same size. Elements in vals represent the value, and the
@@ -865,7 +693,7 @@ def two_list(vals, counts): # q41
 
 # disc09 - https://cs61a.org/disc/disc09/
 
-def convert_link(link): # q42
+def convert_link(link): # q31
     """Takes a linked list and returns a Python list with the same elements.
 
     >>> link = Link(1, Link(2, Link(3, Link(4))))
@@ -877,7 +705,7 @@ def convert_link(link): # q42
     "*** YOUR CODE HERE ***"
 
 
-def multiply_lnks(lst_of_lnks): # q43
+def multiply_lnks(lst_of_lnks): # q32
     """
     >>> a = Link(2, Link(3, Link(5)))
     >>> b = Link(6, Link(4, Link(2)))
@@ -891,9 +719,17 @@ def multiply_lnks(lst_of_lnks): # q43
     True
     """
     "*** YOUR CODE HERE ***"
+    # Implementation Note: you might not need all lines in this skeleton code
+    ___________________ = ___________
+    for _______________________________________:
+        if __________________________________________:
+            _________________________________
+        ___________________
+	________________________________________________________
+    ________________________________________________________
 
 
-def flip_two(s): # q44
+def flip_two(s): # q33
     """
     >>> one_lnk = Link(1)
     >>> flip_two(one_lnk)
@@ -912,15 +748,14 @@ def flip_two(s): # q44
 
 # lab10 - https://cs61a.org/lab/lab10/
 
-def deep_len(lnk): # q45
+def deep_len(lnk): # q34
     """ Returns the deep length of a possibly deep linked list.
 
     >>> deep_len(Link(1, Link(2, Link(3))))
     3
     >>> deep_len(Link(Link(1, Link(2)), Link(3, Link(4))))
     4
-    >>> levels = Link(Link(Link(1, Link(2)), \
-            Link(3)), Link(Link(4), Link(5)))
+    >>> levels = Link(Link(Link(1, Link(2)), Link(3)), Link(Link(4), Link(5)))
     >>> print(levels)
     <<<1 2> 3> <4> 5>
     >>> deep_len(levels)
@@ -934,7 +769,7 @@ def deep_len(lnk): # q45
         return _________________________
 
 
-def make_to_string(front, mid, back, empty_repr): # q46
+def make_to_string(front, mid, back, empty_repr): # q35
     """ Returns a function that turns linked lists to strings.
 
     >>> kevins_to_string = make_to_string("[", "|-]-->", "", "[]")
@@ -959,76 +794,29 @@ def make_to_string(front, mid, back, empty_repr): # q46
 
 # concept 7 - trees
 
-# hw04 - https://cs61a.org/hw/hw04/
-
-def replace_loki_at_leaf(t, lokis_replacement): # q47
-    """Returns a new tree where every leaf value equal to "loki" has
-    been replaced with lokis_replacement.
-
-    >>> yggdrasil = tree('odin',
-    ...                  [tree('balder',
-    ...                        [tree('loki'),
-    ...                         tree('freya')]),
-    ...                   tree('frigg',
-    ...                        [tree('loki')]),
-    ...                   tree('loki',
-    ...                        [tree('sif'),
-    ...                         tree('loki')]),
-    ...                   tree('loki')])
-    >>> laerad = copy_tree(yggdrasil) # copy yggdrasil for testing purposes
-    >>> print_tree(replace_loki_at_leaf(yggdrasil, 'freya'))
-    odin
-      balder
-        freya
-        freya
-      frigg
-        freya
-      loki
-        sif
-        freya
-      freya
-    >>> laerad == yggdrasil # Make sure original tree is unmodified
-    True
-    """
-    "*** YOUR CODE HERE ***"
-
-
 # disc05 - https://cs61a.org/disc/disc05/
 
-def height(t): # q48
-    """Return the height of a tree.
-
-    >>> t = tree(3, [tree(5, [tree(1)]), tree(2)])
-    >>> height(t)
-    2
-    >>> t = tree(3, [tree(1), tree(2, [tree(5, [tree(6)]), tree(1)])])
-    >>> height(t)
-    3
-    """
-    "*** YOUR CODE HERE ***"
-
-
-def sum_tree(t): # q49
+def sum_tree(t): # q36
     """
     Add all elements in a tree.
-    >>> t = tree(4, [tree(2, [tree(3)]), tree(6)])
+    >>> t = Tree(4, [Tree(2, [Tree(3)]), Tree(6)])
     >>> sum_tree(t)
     15
     """
     "*** YOUR CODE HERE ***"
 
 
-def sprout_leaves(t, leaves): # q50
+def sprout_leaves(t, leaves): # q37
     """Sprout new leaves containing the data in leaves at each leaf in
     the original tree t and return the resulting tree.
 
-    >>> t1 = tree(1, [tree(2), tree(3)])
-    >>> print_tree(t1)
+    >>> t1 = Tree(1, [Tree(2), Tree(3)])
+    >>> print(t1)
     1
       2
       3
     >>> new1 = sprout_leaves(t1, [4, 5])
-    >>> print_tree(new1)
+    >>> print(new1)
     1
       2
         4
@@ -1037,13 +825,13 @@ def sprout_leaves(t, leaves): # q50
         4
         5
 
-    >>> t2 = tree(1, [tree(2, [tree(3)])])
-    >>> print_tree(t2)
+    >>> t2 = Tree(1, [Tree(2, [Tree(3)])])
+    >>> print(t2)
     1
       2
         3
     >>> new2 = sprout_leaves(t2, [6, 1, 2])
-    >>> print_tree(new2)
+    >>> print(new2)
     1
       2
         3
@@ -1054,17 +842,17 @@ def sprout_leaves(t, leaves): # q50
     "*** YOUR CODE HERE ***"
 
 
-def hailstone_tree(n, h): # q51
+def hailstone_tree(n, h): # q38
     """Generates a tree of hailstone numbers that will reach N, with height H.
-    >>> print_tree(hailstone_tree(1, 0))
+    >>> print(hailstone_tree(1, 0))
     1
-    >>> print_tree(hailstone_tree(1, 4))
+    >>> print(hailstone_tree(1, 4))
     1
         2
             4
                 8
                     16
-    >>> print_tree(hailstone_tree(8, 3))
+    >>> print(hailstone_tree(8, 3))
     8
         16
             32
@@ -1079,17 +867,10 @@ def hailstone_tree(n, h): # q51
         branches += _________________________________
     return Tree(n, branches)
 
-def print_tree(t):
-    def helper(i, t):
-        print("    " * i + str(t.label))
-        for b in t.branches:
-            helper(i + 1, b)
-    helper(0, t)
-
 
 # disc09 - https://cs61a.org/disc/disc09/
 
-def find_paths(t, entry): # q52
+def find_paths(t, entry): # q39
     """
     >>> tree_ex = Tree(2, [Tree(7, [Tree(3), Tree(6, [Tree(5), Tree(11)])]), Tree(1, [Tree(5)])])
     >>> find_paths(tree_ex, 5)
@@ -1108,7 +889,7 @@ def find_paths(t, entry): # q52
 
 # lab09 - https://cs61a.org/lab/lab09/
 
-def make_even(t): # q53
+def make_even(t): # q40
     """
     >>> t = Tree(1, [Tree(2, [Tree(3)]), Tree(4), Tree(5)])
     >>> make_even(t)
@@ -1120,7 +901,7 @@ def make_even(t): # q53
     "*** YOUR CODE HERE ***"
 
 
-def is_bst(t): # q54
+def is_bst(t): # q41
     """Returns True if the Tree t has the structure of a valid BST.
 
     >>> t1 = Tree(6, [Tree(2, [Tree(1), Tree(4)]), Tree(7, [Tree(7), Tree(8)])])
@@ -1150,7 +931,7 @@ def is_bst(t): # q54
 
 # lab10 - https://cs61a.org/lab/lab10/
 
-def reverse_other(t): # q55
+def reverse_other(t): # q42
     """Mutates the tree such that nodes on every other (odd-depth)
     level have the labels of their branches all reversed.
 
