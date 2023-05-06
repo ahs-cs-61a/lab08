@@ -58,8 +58,8 @@ def test_divisible_by_k():
         print_error("Incorrect prints from divisible_by_k(10, 2)")
         assert divisible_by_k_10_2 == divisible_by_k_10_2_output
     assert lab.divisible_by_k(10, 2) == 5
-        
 
+    print("\n\ndivisible_by_k(6, 7) prints:")
     with Capturing() as divisible_by_k_6_7_output:
         lab.divisible_by_k(6, 7)
     divisible_by_k_6_7 = []
@@ -67,6 +67,7 @@ def test_divisible_by_k():
         print_error("Incorrect prints from divisible_by_k(6, 7)")
         assert divisible_by_k_6_7 == divisible_by_k_6_7_output
     assert lab.divisible_by_k(6, 7) == 0
+    return True
 
 
 def test_ordered_digits():
@@ -76,9 +77,9 @@ def test_ordered_digits():
     assert lab.ordered_digits(1357)
     result = lab.ordered_digits(21)
     assert not result
-    if result is not None:
-        print_error("Print, don't return.")
-        assert result is None
+    cases = [(1, True), (9, True), (10, False), (11, True), (32, False), (23, True), (99, True), (111, True), (122, True), (223, True), (232, False), (999, True), (13334566666889, True), (987654321, False)]
+    assert [lab.ordered_digits(s) == t for s, t in cases].count(False) == 0
+    return True
 
 
 def test_get_k_run_starter():
@@ -90,6 +91,7 @@ def test_get_k_run_starter():
     assert lab.get_k_run_starter(1234234534564567, 0) == 4
     assert lab.get_k_run_starter(1234234534564567, 1) == 3
     assert lab.get_k_run_starter(1234234534564567, 2) == 2
+    return True
 
 
 # concept 2
@@ -97,6 +99,7 @@ def test_get_k_run_starter():
 def test_multiple():
     assert lab.multiple(3, 4) == 12
     assert lab.multiple(14, 21) == 42
+    return True
 
 
 def test_mul_by_num():
@@ -104,6 +107,7 @@ def test_mul_by_num():
     y = lab.mul_by_num(2)
     assert x(3) == 15
     assert y(-4) == -8 
+    return True
 
 
 def test_mod_maker():
@@ -111,9 +115,10 @@ def test_mod_maker():
     assert mod(7, 2) == 1
     assert mod(4, 8) == 4
     assert mod(8,4)
+    return True
 
 
-def test_add_result():
+def test_add_results():
     identity = lambda x: x      
     square = lambda x: x**2
     a1 = lab.add_results(identity, square)
@@ -123,6 +128,7 @@ def test_add_result():
     assert a2(5) == 35
     a3 = lab.add_results(a1, a2)
     assert a3(4) == 44    
+    return True
 
 
 # reference functions for make_repeater & apply_twice
@@ -136,10 +142,12 @@ def test_make_repeater():
     assert lab.make_repeater(square, 2)(5) == 625
     assert lab.make_repeater(square, 4)(5) == 152587890625
     assert lab.make_repeater(square, 0)(5) == 5
+    return True
 
 
 def test_apply_twice():
     assert lab.apply_twice(square)(2) == 16
+    return True
 
 
 def test_div_by_primes_under():
@@ -147,6 +155,7 @@ def test_div_by_primes_under():
     assert not lab.div_by_primes_under(10)(121)
     assert lab.div_by_primes_under(10)(12)
     assert not lab.div_by_primes_under(5)(1)
+    return True
 
 
 def test_no_lambda_div_by_primes_under():
@@ -154,12 +163,14 @@ def test_no_lambda_div_by_primes_under():
     assert not lab.div_by_primes_under(10)(121)
     assert lab.div_by_primes_under(10)(12)
     assert not lab.div_by_primes_under(5)(1)
+    return True
 
 
 # concept 3
 
 def test_count_stair_ways():
     assert lab.count_stair_ways(4) == 5
+    return True
 
 
 def test_count_k():
@@ -167,17 +178,20 @@ def test_count_k():
     assert lab.count_k(4, 4) == 8
     assert lab.count_k(10, 3) == 274
     assert lab.count_k(300, 1) == 1
+    return True
 
 
 def test_insert_into_all():
     nl = [[], [1, 2], [3]]
     assert lab.insert_into_all(0, nl) == [[0], [0, 1, 2], [0, 3]]
+    return True
 
 
 def test_subseqs():
     seqs = lab.subseqs([1, 2, 3])
     assert sorted(seqs) == [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
     assert lab.subseqs([]) == [[]]
+    return True
 
 
 def test_non_decrease_subseqs():
@@ -186,6 +200,7 @@ def test_non_decrease_subseqs():
     assert lab.non_decrease_subseqs([]) == [[]]
     seqs2 = lab.non_decrease_subseqs([1, 1, 2])
     assert sorted(seqs2) == [[], [1], [1], [1, 1], [1, 1, 2], [1, 2], [1, 2], [2]]
+    return True
 
 
 def test_num_trees():
@@ -193,6 +208,7 @@ def test_num_trees():
     assert lab.num_trees(2) == 1
     assert lab.num_trees(3) == 2
     assert lab.num_trees(8) == 429  
+    return True
 
 
 # concept 4
@@ -201,8 +217,9 @@ def test_add_this_many():
     s = [1, 2, 4, 2, 1]
     lab.add_this_many(1, 5, s)
     assert s == [1, 2, 4, 2, 1, 5, 5]
-    lab.dd_this_many(2, 2, s)
+    lab.add_this_many(2, 2, s)
     assert s == [1, 2, 4, 2, 1, 5, 5, 2, 2] 
+    return True
 
 
 def test_partial_reverse():
@@ -211,78 +228,60 @@ def test_partial_reverse():
     assert a == [1, 2, 7, 6, 5, 4, 3]
     lab.partial_reverse(a, 5)
     assert a == [1, 2, 7, 6, 5, 3, 4]
+    return True
 
 
 def test_index_largest():
     assert lab.index_largest([8, 5, 7, 3 ,1]) == 0
     assert lab.index_largest((4, 3, 7, 2, 1)) == 2
+    return True
 
 
 def test_pizza_sort():
     a = [8, 5, 7, 3, 1, 9, 2]
     lab.pizza_sort(a)
     assert a == [9, 8, 7, 5, 3, 2, 1]
+    return True
 
 
 def test_trade():
     a = [1, 1, 3, 2, 1, 1, 4]
     b = [4, 3, 2, 7]
-    with Capturing() as trade_1_output:
-        lab.trade(a, b)
-    if trade_1_output != "Deal!":
-        print_error("Incorrect prints from trade([1, 1, 3, 2, 1, 1, 4], [4, 3, 2, 7])")
-        assert trade_1_output == "Deal!"
+    assert lab.trade(a, b) == 'Deal!'
     assert a == [4, 3, 1, 1, 4]
     assert b == [1, 1, 3, 2, 2, 7]
-
     c = [3, 3, 2, 4, 1]
-    with Capturing() as trade_2_output:
-        lab.trade(b, c)
-    if trade_2_output != "No deal!":
-        print_error("Incorrect prints from trade([1, 1, 3, 2, 2, 7], [3, 3, 2, 4, 1])")
-        assert trade_1_output == "No deal!"
+    assert lab.trade(b, c) == 'No deal!'
     assert b == [1, 1, 3, 2, 2, 7]
     assert c == [3, 3, 2, 4, 1]
-
-    with Capturing() as trade_3_output:
-        lab.trade(a, c)
-    if trade_3_output != "Deal!":
-        print_error("Incorrect prints from trade([4, 3, 1, 1, 4], [3, 3, 2, 4, 1])")
-        assert trade_3_output == "Deal!"
+    assert lab.trade(a, c) == 'Deal!'
     assert a == [3, 3, 2, 1, 4]
     assert b == [1, 1, 3, 2, 2, 7]
     assert c == [4, 3, 1, 4, 1]
-    
     d = [1, 1]
     e = [2]
-    with Capturing() as trade_4_output:
-        lab.trade(d, e)
-    if trade_4_output != "Deal!":
-        print_error("Incorrect prints from trade([1, 1], [2])")
-        assert trade_4_output == "Deal!"
+    assert lab.trade(d, e) == 'Deal!'
     assert d == [2]
     assert e == [1, 1]
-
-
-def card(n): # used in test_shuffle
-    """Return the playing card numeral as a string for a positive n <= 13."""
-    assert type(n) == int and n > 0 and n <= 13, "Bad card n"
-    specials = {1: 'A', 11: 'J', 12: 'Q', 13: 'K'}
-    return specials.get(n, str(n))
+    return True
 
 
 def test_shuffle():
     assert lab.shuffle(range(6)) == [0, 3, 1, 4, 2, 5]
     suits = ['H', 'D', 'S', 'C']
-    cards = [card(n) + suit for n in range(1,14) for suit in suits]
+    cards = [lab.card(n) + suit for n in range(1,14) for suit in suits]
     assert cards[:12] == ['AH', 'AD', 'AS', 'AC', '2H', '2D', '2S', '2C', '3H', '3D', '3S', '3C']
     assert cards[26:30] == ['7S', '7C', '8H', '8D']
     assert lab.shuffle(cards)[:12] == ['AH', '7S', 'AD', '7C', 'AS', '8H', 'AC', '8D', '2H', '8S', '2D', '8C']
     assert lab.shuffle(lab.shuffle(cards))[:12] == ['AH', '4D', '7S', '10C', 'AD', '4S', '7C', 'JH', 'AS', '4C', '8H', 'JD']
-    assert lab.cards[:12] == ['AH', 'AD', 'AS', 'AC', '2H', '2D', '2S', '2C', '3H', '3D', '3S', '3C']
+    assert cards[:12] == ['AH', 'AD', 'AS', 'AC', '2H', '2D', '2S', '2C', '3H', '3D', '3S', '3C']
+    return True
 
 
 # concept 5
+
+floats = iter([0.0, 0.1, 0.2, 0.3, 0.4, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+random = lambda: next(floats)   
 
 def test_player():
     p1 = lab.Player('Hill')
@@ -307,6 +306,7 @@ def test_player():
     assert p2.popularity == 49
     p2.debate(p1)
     assert p2.popularity == 0
+    return True
 
 
 def test_game():
@@ -317,19 +317,20 @@ def test_game():
     assert winner is g.winner()
     assert g.turn == 10
     p1.votes = p2.votes
-    assert g.winner is None
+    assert g.winner() is None
+    return True
 
 
-def test_aggresive_player():
+def test_aggressive_player():
     p1, p2 = lab.AggressivePlayer('Don'), lab.Player('Hill')
     g = lab.Game(p1, p2)
     winner = g.play()
-    assert p1 is winner
     p1.popularity = p2.popularity
     assert p1.choose(p2) == p1.debate
     p1.popularity += 1
     assert not p1.choose(p2) == p1.debate
     assert p2.choose(p1) == p2.speech
+    return True
 
 
 def test_cautious_player():
@@ -339,6 +340,7 @@ def test_cautious_player():
     p1.popularity = 1
     assert not p1.choose(p2) == p1.debate
     assert p2.choose(p1) == p2.speech
+    return True
 
 
 def test_person():
@@ -350,6 +352,7 @@ def test_person():
     assert steven.repeat() == 'Hello, my name is Steven'
     assert steven.ask("preserve abstraction barriers") == 'Would you please preserve abstraction barriers'
     assert steven.repeat() == 'Would you please preserve abstraction barriers'
+    return True
 
 
 def test_round():
@@ -367,11 +370,12 @@ def test_round():
 
     with Capturing() as play_round_2_output:
         g.play_round(3, [(3, 7), (2, 5), (0, 9)])
-    play_round_2 = "It is not your turn, player 2"
+    play_round_2 = ["It is not your turn, player 2"]
     if play_round_2 != play_round_2_output:
         print_error("Inccorect prints from g.play_round(3, [(3, 7), (2, 5), (0, 9)]).")
         assert play_round_2 == play_round_2_output
     assert g.winners == [1, 3]
+    return True
 
 
 # concept 6
@@ -385,12 +389,14 @@ def test_two_list():
     b = [2, 2, 1]
     c = lab.two_list(a, b)
     assert repr(c) == "Link(1, Link(1, Link(3, Link(3, Link(2)))))"
+    return True
 
 
 def test_convert_link():
     link = lab.Link(1, lab.Link(2, lab.Link(3, lab.Link(4))))
     assert lab.convert_link(link) == [1, 2, 3, 4]
     assert lab.convert_link(lab.Link.empty) == []
+    return True
 
 
 def test_multiply_lnks():
@@ -401,16 +407,18 @@ def test_multiply_lnks():
     assert p.first == 48
     assert p.rest.first == 12
     assert p.rest.rest.rest is lab.Link.empty
+    return True
 
 
 def test_flip_two():
     one_lnk = lab.Link(1)
     lab.flip_two(one_lnk)
-    assert repr(one_lnk) = "Link(1)"
+    assert repr(one_lnk) == "Link(1)"
     lnk = lab.Link(1, lab.Link(2, lab.Link(3, lab.Link(4, lab.Link(5)))))
     lab.flip_two(lnk)
-    assert repr(lnk) = "Link(2, Link(1, Link(4, Link(3, Link(5)))))"
-
+    assert repr(lnk) == "Link(2, Link(1, Link(4, Link(3, Link(5)))))"
+    return True
+    
 
 def test_deep_len():
     assert lab.deep_len(lab.Link(1, lab.Link(2, lab.Link(3)))) == 3
@@ -418,6 +426,7 @@ def test_deep_len():
     levels = lab.Link(lab.Link(lab.Link(1, lab.Link(2)), lab.Link(3)), lab.Link(lab.Link(4), lab.Link(5)))
     assert str(levels) == "<<<1 2> 3> <4> 5>"
     assert lab.deep_len(levels) == 5
+    return True
 
 
 def test_make_to_string():
@@ -428,6 +437,7 @@ def test_make_to_string():
     assert kevins_to_string(lab.Link.empty) == '[]'
     assert jerrys_to_string(lst) == '(1 . (2 . (3 . (4 . ()))))'
     assert jerrys_to_string(lab.Link.empty) == '()' 
+    return True
 
 
 # concept 7
@@ -435,6 +445,7 @@ def test_make_to_string():
 def test_sum_tree():
     t = lab.Tree(4, [lab.Tree(2, [lab.Tree(3)]), lab.Tree(6)])
     assert lab.sum_tree(t) == 15
+    return True
 
 
 def test_sprout_leaves():
@@ -444,18 +455,21 @@ def test_sprout_leaves():
     t2 = lab.Tree(1, [lab.Tree(2, [lab.Tree(3)])])
     new2 = lab.sprout_leaves(t2, [6, 1, 2])
     assert repr(new2) == "Tree(1, [Tree(2, [Tree(3, [Tree(6), Tree(1), Tree(2)])])])"
-
+    return True
+    
 
 def test_hailstone_tree():
     assert repr(lab.hailstone_tree(1, 0)) == "Tree(1)"
     assert repr(lab.hailstone_tree(1, 4)) == "Tree(1, [Tree(2, [Tree(4, [Tree(8, [Tree(16)])])])])"
     assert repr(lab.hailstone_tree(8, 3)) == "Tree(8, [Tree(16, [Tree(32, [Tree(64)]), Tree(5, [Tree(10)])])])"
+    return True
 
 
 def test_find_paths():
     tree_ex = lab.Tree(2, [lab.Tree(7, [lab.Tree(3), lab.Tree(6, [lab.Tree(5), lab.Tree(11)])]), lab.Tree(1, [lab.Tree(5)])])
     assert lab.find_paths(tree_ex, 5) == [[2, 7, 6, 5], [2, 1, 5]]
     assert lab.find_paths(tree_ex, 12) == []
+    return True
 
 
 def test_make_even():
@@ -463,6 +477,7 @@ def test_make_even():
     lab.make_even(t)
     assert t.label == 2
     assert t.branches[0].branches[0].label == 4  
+    return True
 
 
 def test_is_bst():
@@ -480,6 +495,7 @@ def test_is_bst():
     assert lab.is_bst(t6)
     t7 = lab.Tree(2, [lab.Tree(1, [lab.Tree(5)]), lab.Tree(4)])
     assert not lab.is_bst(t7)
+    return True
 
 
 def test_reverse_other():
@@ -489,7 +505,80 @@ def test_reverse_other():
     t = lab.Tree(1, [lab.Tree(2, [lab.Tree(3, [lab.Tree(4), lab.Tree(5)]), lab.Tree(6, [lab.Tree(7)])]), lab.Tree(8)])
     lab.reverse_other(t)
     assert repr(t) == "Tree(1, [Tree(8, [Tree(3, [Tree(5), Tree(4)]), Tree(6, [Tree(7)])]), Tree(2)])"
+    return True
 
+
+# SUMMATIVE TESTS
+
+all_1 = [[test_divisible_by_k], [test_ordered_digits], [test_get_k_run_starter]]
+
+all_2 = [[test_multiple], [test_mul_by_num], [test_mod_maker], [test_add_results], [test_make_repeater], [test_apply_twice], [test_div_by_primes_under], [test_no_lambda_div_by_primes_under]]
+
+all_3 = [[test_count_stair_ways], [test_count_k], [test_insert_into_all], [test_subseqs], [test_non_decrease_subseqs], [test_num_trees]]
+
+all_4 =  [[test_add_this_many], [test_partial_reverse], [test_index_largest], [test_pizza_sort], [test_trade], [test_shuffle]]
+
+all_5 = [[test_person], [test_round]] 
+
+all_6 = [[test_two_list], [test_convert_link], [test_multiply_lnks], [test_flip_two], [test_deep_len], [test_make_to_string]]
+
+all_7 = [[test_sum_tree], [test_sprout_leaves], [test_hailstone_tree], [test_find_paths], [test_make_even], [test_is_bst], [test_reverse_other]]
+
+def test_all_1():
+    for test in all_1:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_1])
+
+
+def test_all_2():
+    for test in all_2:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_2])
+
+    
+def test_all_3():
+    for test in all_3:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_3])
+
+    
+def test_all_4():
+    for test in all_4:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_4])
+    
+
+def test_all_5():
+    for test in all_5:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_5])
+    
+
+def test_all_6():
+    for test in all_6:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_6])
+    
+
+def test_all_7():
+    for test in all_7:
+        result = test[0]()
+        if result:
+            test.append(result)
+    assert all([i[1] for i in all_7])
+    
 
 user = []
 

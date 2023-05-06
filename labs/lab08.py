@@ -1,6 +1,6 @@
 # lab08: review/additional practice 
 
-from random import *
+from tests.test import *
 import math 
 pi = math.pi
 
@@ -309,14 +309,7 @@ def non_decrease_subseqs(s): # q16
 
 
 def num_trees(n): # q17
-    """Returns the number of unique full binary trees with exactly n leaves. E.g.,
-
-    1   2        3       3    ...
-    *   *        *       *
-       / \      / \     / \
-      *   *    *   *   *   *
-              / \         / \
-             *   *       *   *
+    """Returns the number of unique full binary trees with exactly n leaves.
 
     >>> num_trees(1)
     1
